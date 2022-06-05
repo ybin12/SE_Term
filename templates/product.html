@@ -11,32 +11,11 @@
         <link rel="stylesheet" href="{{url_for('static', filename='search.css')}}">
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+        
 
         <style>
-        .mybtn {
-            font-size: 20px;
-            padding: 5px 10px;
-            background-color: white;
-            color: orange;
-            border: 2px solid orange;
-            border-radius: 5px;
-            
-            letter-spacing: 4px;
-            
-            transition: all 0.4s;
-            cursor:pointer;
-        }
         
-        .mybtn:focus {
-            outline: none;
-        }
-        
-        .mybtn:hover {
-            background-color: orange;
-            color: white;
-        }
-        
-
         </style>
         
     </head>
@@ -56,10 +35,10 @@
         
         <table>
             <tr>
-                <td  style = "padding-right : 40px">
+                <td style = "padding-right : 40px">
                     <img src = "../static/market.png" onClick = "location.href='/'" style = "cursor:pointer">
                 </td>
-                <td style = "padding-top : 15px">
+                <td style = "padding-top : 15px;padding-right : 550px">
                     <form action = "search_key" method = "post">
                         <div class="search">
                             <span class="green_window">
@@ -70,6 +49,15 @@
                         </div><!-- search --> <br><br>
                     </form>
                 </td>
+                <td style = "padding-right:30px;padding-top:10px">
+                    <img src = "../static/writing.png" style = "height:30px;width:30px">
+                    <label onClick = "location.href='/write'" style = "font-family:Nanum Gothic;font-weight:800;cursor:pointer">판매글 작성</label>
+                </td>
+                <td style = "padding-top:10px">
+                    <img src = "../static/follow.png" style = "height:30px;width:30px">
+                    <label onClick = "location.href='/follower_page'" style = "font-family:Nanum Gothic;font-weight:800;cursor:pointer">팔로우 목록</label>
+                </td>
+
             </tr>
         </table>
 
@@ -88,13 +76,14 @@
                         <li class="list-group-item">
                             <!--판매자ID&nbsp;&nbsp;&nbsp;&nbsp;{{products.p_id}} -->
                             <i class="fa-solid fa-user" style = "padding-top:5px"> 판매자</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ybin
-                            <i class="fa-solid fa-heart-circle-plus" style = "float:right;padding-top:5px;cursor:pointer;padding-right:14px" onClick = "window.location.href='{{url_for('follow', input_id = products.p_id)}}'"> 팔로우</i>
+                            <i class="fa-solid fa-heart-circle-plus" style = "float:right;padding-top:5px;cursor:pointer;padding-right:14px" onClick = "window.location.href='{{url_for('follow', input_id = products.p_id)}}'"> 팔로우하기</i>
                             <!--<input type = "button" style = "float:right" class = "btn btn-primary" value = "팔로우하기" onClick = "window.location.href='{{url_for('follow', input_id = products.p_id)}}'"> -->
                         </li>
                         <li class="list-group-item">
                             <!--판매상태&nbsp;&nbsp;&nbsp;&nbsp;{{products.p_sold}}-->
                             <i class="fa-solid fa-dollar-sign" style = "padding-top:5px"> 판매상태</i>&nbsp;&nbsp;{{products.p_sold}}
-                            <i class="fa-solid fa-circle-exclamation" style = "float:right;padding-top:5px;cursor:pointer" onClick = "window.location.href='{{url_for('sold', input_id = products.id)}}'"> 판매완료</i>
+                            <i class="fa-solid fa-circle-exclamation" style = "float:right;padding-top:5px;cursor:pointer" onClick = "window.location.href='{{url_for('sold', input_id = products.id)}}'"> 판매완료처리</i>
+                            
                             <!--<input type = "button" style = "float:right" class = "btn btn-primary" value = "판매완료" onClick = "window.location.href='{{url_for('sold', input_id = products.id)}}'"> -->
                         </li>
                         <!--
