@@ -1,0 +1,64 @@
+<html>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <script type="text/javascript">
+        alert("{{messages[-1]}}");
+    </script>
+    {% endif %}
+    {% endwith %}
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    </head>
+    <body>
+        <div class="container my-3">
+            {%if session['id']%}
+                <h1>안녕하세요 {{session['id']}}님</h1>
+                <input type = "button" value = "팔로우목록" onClick = "location.href='/follower_page'">
+                <input type = "button" value = "로그아웃" onClick = "location.href='/logout'">
+            {%else%}
+                <h1>로그인을 해주세요</h1>
+                <input type = "button" value = "로그인" onClick = "location.href='/login'">
+            {%endif%}
+            <div>
+            <form action = "search_key" method = "post">
+                <input type = "text" name = "key">
+                <input type = "submit" value = "검색">
+            </form>
+            </div>
+            <table class="table">
+                <thead>
+                <tr class="table-dark">
+                    <th>번호</th>
+                    <th>상품</th>
+                    <th>키워드</th>
+                    <th>가격</th>
+                    <th>판매상태</th>
+                    <th>ID</th>
+                    <th>작성일시</th>
+                </thead>
+                <tbody>
+                {%if product_list%}
+                {%for products in product_list%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td><a href="{{url_for('product_page', input_id = products.id)}}">{{products.p_info}}</a></td>
+                    <td>{{products.p_key}}</td>
+                    <td>{{products.p_price}}</td>
+                    <td>{{products.p_sold}}</td>
+                    <td>{{products.p_id}}</td>
+                    <td>{{products.p_time}}</td>
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">상품이 없습니다</td>
+                </tr>
+                {%endif%}
+                </tbody>
+            </table>
+            <div>
+                <input type = "button" name = "write" value = "글쓰기" onClick = "location.href='/write'">
+            </div>
+        <div>
+    </body>
+</html>

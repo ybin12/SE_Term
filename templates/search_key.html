@@ -1,0 +1,58 @@
+<html>
+
+
+    
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <script type="text/javascript">
+        alert("{{messages[-1]}}");
+    </script>
+    {% endif %}
+    {% endwith %}
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container my-3">
+            <h1>검색결과 : {{result}}</h1>
+            
+            
+            <table class="table">
+                <thead>
+                <tr class="table-dark">
+                    <th>번호</th>
+                    <th>상품</th>
+                    <th>키워드</th>
+                    <th>가격</th>
+                    <th>판매상태</th>
+                    <th>ID</th>
+                    <th>작성일시</th>
+                </thead>
+                <tbody>
+                {%if product_list%}
+                {%for products in product_list%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td><a href="{{url_for('product_page', input_id = products.id)}}">{{products.p_info}}</a></td>
+                    <td>{{products.p_key}}</td>
+                    <td>{{products.p_price}}</td>
+                    <td>{{products.p_sold}}</td>
+                    <td>{{products.p_id}}</td>
+                    <td>{{products.p_time}}</td>
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">검색된 상품이 없습니다</td>
+                </tr>
+                {%endif%}
+                </tbody>
+            </table>
+            <div>
+                <input type = "button" value = "돌아가기" onClick = "location.href='/'">
+            </div>
+        <div>
+    </body>
+</html>
