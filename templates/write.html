@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{url_for('static', filename='search.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+
         <style>
         .input-group {margin:20px;}
         h1 {
@@ -75,16 +77,13 @@
     </head>
     <body>
         
-        
-
-
     <div class="container my-3" style = "width:80%">
         <table>
             <tr>
                 <td  style = "padding-right : 40px">
                     <img src = "../static/market.png" onClick = "location.href='/'" style = "cursor:pointer">
                 </td>
-                <td style = "padding-top : 15px">
+                <td style = "padding-top : 15px;padding-right : 550px">
                     <form action = "search_key" method = "post">
                         <div class="search">
                             <span class="green_window">
@@ -95,6 +94,14 @@
                         </div><!-- search --> <br><br>
                     </form>
                 </td>
+                <td style = "padding-right:30px;padding-top:10px">
+                    <img src = "../static/writing.png" style = "height:30px;width:30px">
+                    <label onClick = "location.href='/write'" style = "font-family:Nanum Gothic;font-weight:800;cursor:pointer">판매글 작성</label>
+                </td>
+                <td style = "padding-top:10px">
+                    <img src = "../static/follow.png" style = "height:30px;width:30px">
+                    <label onClick = "location.href='/follower_page'" style = "font-family:Nanum Gothic;font-weight:800;cursor:pointer">팔로우 목록</label>
+                </td>
             </tr>
         </table>
         <hr style = "height: 10px;color:red;background:orange;"><br>
@@ -103,7 +110,7 @@
         </div> -->
         
         <form action = "/write" method = "post" enctype = "multipart/form-data">
-            <div class = "row">
+            <div class = "row" style = "margin-left:50px;margin-bottom:30px">
                 
                 <div class = "col">
                     <div style = "margin-top:55px;margin-left:40px">
@@ -125,7 +132,7 @@
                         <i class="fa-solid fa-pen"> 상품설명</i>
                     </td>
                     <td class = "description_td" style = "padding-top:50px">
-                        <textarea name = "p_info" class="form-control" cols="30" rows="5"></textarea>
+                        <textarea name = "p_info" class="form-control" cols="15" rows="5"></textarea>
                     </td>
                 </tr>
                     

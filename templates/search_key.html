@@ -12,11 +12,50 @@
     {% endwith %}
     <head>
         <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
     </head>
     <body>
-        <div class="container my-3">
-            <h1>검색결과 : {{result}}</h1>
+        <div class="container my-3" style = "width:80%">
+            <div>
+                <h1></h1><br>
+            </div>
+            <table>
+                <tr>
+                    <td style = "padding-right : 40px">
+                        <img src = "../static/market.png" onClick = "location.href='/'" style = "cursor:pointer">
+                    </td>
+                    <td style = "padding-top : 15px;padding-right : 550px">
+                        <form action = "search_key" method = "post">
+                            <div class="search">
+                                <span class="green_window">
+                                    <input type="text" id="query" class="input_text" maxlength="255" name = "key" />
+                                <button id="search_btn" type="submit" title="검색"  class="sch_smit">
+                                    <span class="ico_search_submit"></span>
+                                </button>
+                            </div><!-- search --> <br><br>
+                        </form>
+                    </td>
+                    <td style = "padding-right:30px;padding-top:10px">
+                        <img src = "../static/writing.png" style = "height:30px;width:30px">
+                        <label onClick = "location.href='/write'" style = "font-family:Nanum Gothic;font-weight:800;cursor:pointer">판매글 작성</label>
+                    </td>
+                    <td style = "padding-top:10px">
+                        <img src = "../static/follow.png" style = "height:30px;width:30px">
+                        <label onClick = "location.href='/follower_page'" style = "font-family:Nanum Gothic;font-weight:800;cursor:pointer">팔로우 목록</label>
+                    </td>
+    
+                </tr>
+            </table>
+    
+            
+            <hr style = "height: 10px;color:red;background:orange;"><br>
+            
+            <div style = margin-bottom:20px;margin-left:20px>
+                <img src = "../static/search_icon.png" style = "height:40px;width:40px">
+                <label style = "font-family:Nanum Gothic;font-weight:800;cursor:pointer;font-size:25px">키워드 검색 : {{result}}</label>
+            </div>
             
             
             <table class="table">
